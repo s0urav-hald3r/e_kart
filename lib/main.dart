@@ -1,8 +1,10 @@
-import 'package:e_kart/views/splash_page.dart';
+import 'package:e_kart/controllers/auth_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
+import 'config/routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +14,9 @@ Future<void> main() async {
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark));
+
+  Get.lazyPut(() => AuthController(), fenix: true);
+
   runApp(const MyApp());
 }
 
@@ -21,10 +26,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       title: 'eKart',
       debugShowCheckedModeBanner: false,
-      home: SplashPage(),
+      initialRoute: Routes.splash,
+      getPages: getPages,
     );
   }
 }
