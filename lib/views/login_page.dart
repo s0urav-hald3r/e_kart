@@ -1,3 +1,4 @@
+import 'package:e_kart/views/otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
@@ -55,18 +56,18 @@ class _LoginPageState extends State<LoginPage> {
                       const Spacer(),
                       Text(
                         'Welcome to eKart',
-                        style: GoogleFonts.quicksand(
-                            color: Colors.black87,
+                        style: GoogleFonts.poppins(
+                            color: AppConstants.blackColor,
                             fontSize: SizeConfig.screenWidth! * 0.07,
                             fontWeight: FontWeight.bold),
                       ),
                       const Gap(10),
                       Text(
                         'Purchase whatever you want',
-                        style: GoogleFonts.quicksand(
-                            color: Colors.black45,
+                        style: GoogleFonts.poppins(
+                            color: AppConstants.greyColor,
                             fontSize: SizeConfig.screenWidth! * 0.04,
-                            fontWeight: FontWeight.w700),
+                            fontWeight: FontWeight.w600),
                       ),
                       const Spacer(),
                       Container(
@@ -128,7 +129,11 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             InkWell(
                               onTap: () => phoneController.text.isEmpty
-                                  ? null
+                                  ? Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              OTP(mobileNumber: '8609640499'))))
                                   : handleOtpLogin(),
                               child: Container(
                                 width: SizeConfig.screenWidth! * 0.25,
