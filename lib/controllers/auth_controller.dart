@@ -35,7 +35,10 @@ class AuthController extends GetxController {
 
       // Sign the user in (or link) with the credential
       await _firebaseAuth.signInWithCredential(credential);
+      _isLoading.value = false;
+      Get.offNamedUntil(Routes.home, (route) => false);
     } on FirebaseAuthException catch (e) {
+      _isLoading.value = false;
       if (e.code == 'invalid-verification-code') {
         Get.snackbar("Error", 'Invalid OTP',
             snackPosition: SnackPosition.BOTTOM,
@@ -45,8 +48,6 @@ class AuthController extends GetxController {
       Get.snackbar("Error", 'Something went wrong',
           snackPosition: SnackPosition.BOTTOM,
           colorText: AppConstants.blackColor);
-    } finally {
-      _isLoading.value = false;
     }
   }
 

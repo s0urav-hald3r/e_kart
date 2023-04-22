@@ -25,6 +25,13 @@ class _OTPState extends State<OTP> {
   StreamController<ErrorAnimationType> errorController =
       StreamController<ErrorAnimationType>();
   bool isOTPfilled = false;
+  String mobile = '';
+
+  @override
+  void initState() {
+    super.initState();
+    mobile = Get.arguments['mobile'];
+  }
 
   void otpLogin() {
     String otp = otpController.text;
@@ -73,7 +80,7 @@ class _OTPState extends State<OTP> {
                           ),
                           const Gap(10),
                           Text(
-                            '+91 ${Get.arguments['mobile']}',
+                            '+91 $mobile',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                                 color: AppConstants.blackColor,

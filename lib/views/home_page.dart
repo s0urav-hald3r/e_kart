@@ -2,6 +2,7 @@ import 'package:e_kart/config/routes.dart';
 import 'package:e_kart/views/accessory.dart';
 import 'package:e_kart/views/laptop.dart';
 import 'package:e_kart/views/mobile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
@@ -41,6 +42,14 @@ class _HomePageState extends State<HomePage>
           backgroundColor: AppConstants.primaryColor,
           centerTitle: true,
           title: const Text('eKart'),
+          actions: [
+            IconButton(
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                  Get.offNamedUntil(Routes.login, (route) => false);
+                },
+                icon: const Icon(Icons.logout_rounded))
+          ],
         ),
         body: SizedBox(
           height: SizeConfig.screenHeight,
