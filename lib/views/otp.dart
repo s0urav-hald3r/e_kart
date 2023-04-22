@@ -13,8 +13,7 @@ import '../config/size_configs.dart';
 import '../controllers/auth_controller.dart';
 
 class OTP extends StatefulWidget {
-  const OTP({Key? key, required this.mobileNumber}) : super(key: key);
-  final String mobileNumber;
+  const OTP({Key? key}) : super(key: key);
 
   @override
   State<OTP> createState() => _OTPState();
@@ -74,7 +73,7 @@ class _OTPState extends State<OTP> {
                           ),
                           const Gap(10),
                           Text(
-                            '+91 ${widget.mobileNumber}',
+                            '+91 ${Get.arguments['mobile']}',
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                                 color: AppConstants.blackColor,

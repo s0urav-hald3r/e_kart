@@ -1,4 +1,4 @@
-import 'package:e_kart/views/otp.dart';
+import 'package:e_kart/config/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +19,7 @@ class AuthController extends GetxController {
       codeSent: (String verificationId, int? resendToken) {
         _verificationId = verificationId;
         _isLoading.value = false;
-        Get.to(OTP(mobileNumber: mobile));
+        Get.toNamed(Routes.otp, arguments: {'mobile': mobile});
       },
       codeAutoRetrievalTimeout: (String verificationId) {},
     );

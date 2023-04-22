@@ -12,7 +12,7 @@ class DivertionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder<User?>(
-          stream: FirebaseAuth.instance.userChanges(),
+          stream: FirebaseAuth.instance.authStateChanges(),
           builder: ((context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
@@ -24,9 +24,9 @@ class DivertionPage extends StatelessWidget {
               if (snapshot.hasData) {
                 return const HomePage();
               }
-              return const LoginPage();
+              return const HomePage();
             }
-            return const LoginPage();
+            return const HomePage();
           })),
     );
   }

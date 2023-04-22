@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import 'config/routes.dart';
+import 'controllers/product_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,7 @@ Future<void> main() async {
       systemNavigationBarIconBrightness: Brightness.dark));
 
   Get.lazyPut(() => AuthController(), fenix: true);
+  Get.lazyPut(() => ProductController(), fenix: true);
 
   runApp(const MyApp());
 }
