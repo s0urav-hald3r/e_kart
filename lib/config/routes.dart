@@ -1,3 +1,4 @@
+import 'package:e_kart/views/cart_page.dart';
 import 'package:e_kart/views/home_page.dart';
 import 'package:e_kart/views/login_page.dart';
 import 'package:e_kart/views/otp.dart';
@@ -10,6 +11,7 @@ class Routes {
   static String login = '/login';
   static String otp = '/otp';
   static String home = '/home';
+  static String cart = '/cart';
 }
 
 /// Add this list variable into your GetMaterialApp as the value of getPages parameter.
@@ -29,5 +31,9 @@ final getPages = [
   GetPage(
     name: Routes.home,
     page: () => const HomePage(),
+  ),
+  GetPage(
+    name: Routes.cart,
+    page: () => const CartPage(),
   ),
 ];

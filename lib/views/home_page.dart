@@ -1,7 +1,9 @@
+import 'package:e_kart/config/routes.dart';
 import 'package:e_kart/views/accessory.dart';
 import 'package:e_kart/views/laptop.dart';
 import 'package:e_kart/views/mobile.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage>
             Obx(() => _productController.totalCartItems.isEqual(0)
                 ? const SizedBox()
                 : InkWell(
-                    onTap: null,
+                    onTap: () => Get.toNamed(Routes.cart),
                     child: Container(
                       height: SizeConfig.screenHeight! * 0.05,
                       width: SizeConfig.screenWidth! * 0.915,
@@ -147,6 +149,7 @@ class _HomePageState extends State<HomePage>
                                     letterSpacing: 0,
                                     fontSize: SizeConfig.screenWidth! * 0.04),
                               ),
+                              const Gap(10),
                               const Icon(
                                 Icons.arrow_forward_ios_rounded,
                                 size: 15,
